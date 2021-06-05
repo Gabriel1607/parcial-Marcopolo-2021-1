@@ -2,35 +2,39 @@ package model;
 
 import processing.core.PApplet;
 
-public class MarcoFox extends Automata {
+public class MarcoFox extends Automata implements Runnable {
 	public MarcoFox(float posX, float posY, int spd, PApplet app, int r,int g,int b) {
 		super(posX, posY, spd, app,r,g,b);
 	}
 
 	@Override
 	public void run() {
-		
+		// while (true) {
+			 
 		try {
+			
 			Thread.sleep(2000);
-			move();
+			speak();
 		}
 		catch(InterruptedException e) {
 			e.printStackTrace();
 		}
 		
+	
 	}
-
+	//}
 	@Override
 	public void draw() {
 		app.fill(r, g, b);
 		app.circle(posX, posY, size);
-		
+		if(PApplet.second()%2==0) {
+		app.fill(0);
+		app.text("¡Marco!", posX-size, posY+size+1);
+		}
 	}
 
 	
-	public int getCounter() {
-		return counter;
-	}
+
 
 	public void moveSetup(float poloX, float poloY) {
 		//Diferencia de Vectores
@@ -60,8 +64,10 @@ public class MarcoFox extends Automata {
 	}
 	@Override
 	protected void speak() {
-		app.fill(0);
-		app.text("¡Marco!", posX-size, posY+size+1);
+		//
+		if(PApplet.second()%2==0) {
+		System.out.println("Marco");
+		}
 	
 	}
 

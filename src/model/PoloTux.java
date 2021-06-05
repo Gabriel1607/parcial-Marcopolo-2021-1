@@ -19,10 +19,11 @@ private boolean isPursued;
 
 
 	public void run() {
-		move();
-		speak();
+		
+		
 		try {
 			Thread.sleep(2000);
+			speak();
 		}
 		catch(InterruptedException e) {
 			e.printStackTrace();
@@ -34,6 +35,10 @@ private boolean isPursued;
 	public void draw() {
 		app.fill(r, g, b);
 		app.circle(posX, posY, size);
+		if(PApplet.second()%2==0) {
+			app.fill(0);
+			app.text("¡Polo! ("+(int)posX+","+(int)posY+")", posX-size-15, posY+size);
+			}
 	}
 
 	@Override
@@ -51,9 +56,10 @@ private boolean isPursued;
 
 	@Override
 	public void speak() {
-		app.fill(0);
-		app.text("¡Polo! ("+(int)posX+","+(int)posY+")", posX-size-15, posY+size);
 		
+		if(PApplet.second()%2==0) {
+			System.out.println("¡Polo!");
+			}
 	
 		
 		

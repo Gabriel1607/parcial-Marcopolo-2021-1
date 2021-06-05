@@ -4,12 +4,13 @@ import processing.core.PApplet;
 
 public class MarcoFox extends Automata {
 
-	public MarcoFox(float posX, float posY, int spd, PApplet app) {
-		super(posX, posY, spd, app);
+	public MarcoFox(float posX, float posY, int spd, PApplet app, int r,int g,int b) {
+		super(posX, posY, spd, app,r,g,b);
 	}
 
 	@Override
 	public void run() {
+		move();
 		speak();
 		try {
 			Thread.sleep(2000);
@@ -22,7 +23,7 @@ public class MarcoFox extends Automata {
 
 	@Override
 	public void draw() {
-		app.fill(color, 0, 0);
+		app.fill(r, g, b);
 		app.circle(posX, posY, size);
 		
 	}
@@ -51,6 +52,7 @@ public class MarcoFox extends Automata {
 	@Override
 	public void speak() {
 		// TODO Auto-generated method stub
+		app.text("Marco", posX, posY+size);
 		
 	}
 

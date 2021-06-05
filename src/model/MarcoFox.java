@@ -45,15 +45,15 @@ public class MarcoFox extends Automata {
 	
 	@Override
 	public void move() {
-		// TODO Auto-generated method stub
+		
 		posX+=dirX*spd;
 		posY+=dirY*spd;
 	}
 	@Override
-	public void speak() {
-		// TODO Auto-generated method stub
-		app.text("Marco", posX, posY+size);
-		
+	public boolean speak() {
+		app.fill(0);
+		app.text("¡Marco!", posX-size, posY+size);
+		return true;
 	}
 
 	

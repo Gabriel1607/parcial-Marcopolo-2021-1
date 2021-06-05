@@ -12,6 +12,7 @@ public Mundo(PApplet app) {
 public void draw() {
 	fox.draw();
 	fox.move();
+	fox.speak();
 }
 public void mouseClicked() {
 	fox.moveSetup(app.mouseX, app.mouseY);

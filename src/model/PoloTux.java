@@ -37,7 +37,7 @@ private boolean isPursued;
 	}
 
 	@Override
-	public void move() {
+	protected void move() {
 		posX+=dirX*spd;
 		posY+=dirY*spd;
 		if(posX>app.width||0>posX) {
@@ -50,10 +50,10 @@ private boolean isPursued;
 	}
 
 	@Override
-	public boolean speak() {
+	public void speak() {
 		app.fill(0);
 		app.text("¡Polo! ("+(int)posX+","+(int)posY+")", posX-size-15, posY+size);
-		return true;
+		
 	
 		
 		

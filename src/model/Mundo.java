@@ -13,11 +13,12 @@ public Mundo(PApplet app) {
 }
 public void draw() {
 	fox.draw();
-	tux.draw();
-	fox.move();
-	tux.move();
-	fox.speak();
-	tux.speak();
+	//fox.move();
+	new Thread(fox).start();
+	//tux.draw();
+	//tux.move();
+	//tux.speak();
+	//System.out.println(fox.getCounter());
 }
 public void mouseClicked() {
 	fox.moveSetup(app.mouseX, app.mouseY);

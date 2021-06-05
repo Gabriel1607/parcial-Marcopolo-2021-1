@@ -22,7 +22,7 @@ public Automata(float posX, float posY, int spd, PApplet app, int r,int g,int b)
 	
 }
 public abstract void draw();
-public abstract void move();
-public abstract boolean speak();
+protected abstract void move();
+protected abstract void speak();
 }
 

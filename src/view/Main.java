@@ -14,7 +14,7 @@ public class Main extends PApplet {
 		
 	}
 	
-	public void settup() {
+	public void setup() {
 	
 	}
 	

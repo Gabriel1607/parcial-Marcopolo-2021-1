@@ -2,7 +2,7 @@ package model;
 
 import processing.core.PApplet;
 
-public class PoloTux extends Automata {
+public class PoloTux extends Automata implements Runnable {
 private boolean isPursued;
 private boolean amague;
 	public PoloTux(float posX, float posY, int spd, PApplet app, int r, int g, int b) {
@@ -24,7 +24,7 @@ private boolean amague;
 		
 		try {
 			Thread.sleep(2000);
-			//speak();
+			speak();
 		}
 		catch(InterruptedException e) {
 			e.printStackTrace();
@@ -34,7 +34,7 @@ private boolean amague;
 
 	@Override
 	public void draw() {
-		System.out.println(spd);
+		
 		app.fill(r, g, b);
 		app.circle(posX, posY, size);
 		if(PApplet.second()%2==0) {

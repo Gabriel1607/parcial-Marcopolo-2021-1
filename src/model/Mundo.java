@@ -34,6 +34,7 @@ public void draw() {
 		polito.move();
 		new Thread(polito).start();
 	}
+	//Función para comer polos
 	float maxDist = 700;
 	float closeDist = 0;
 	int politoPursued=0;
@@ -57,6 +58,15 @@ for (int i = 0; i < politos.size(); i++) {
 		
 		
 	}
+	//Para que el programa no se dañe al final
+	try {
+        PoloTux element = politos.get(politos.size()-1);
+        
+     } catch(ArrayIndexOutOfBoundsException e) {
+    	 app.fill(255,0,0);
+    	 app.textSize(50);
+        app.text("Game Over",(app.width/2)-150,(app.height/2));
+     }
 }
 
 public void mouseClicked() {

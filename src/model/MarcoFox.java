@@ -48,11 +48,17 @@ public class MarcoFox extends Automata {
 		
 		posX+=dirX*spd;
 		posY+=dirY*spd;
+		if(posX>app.width||0>posX) {
+			dirX=-dirX;
+		}
+		if(posY>app.height||0>posY) {
+			dirY=-dirY;
+		}
 	}
 	@Override
 	public boolean speak() {
 		app.fill(0);
-		app.text("¡Marco!", posX-size, posY+size);
+		app.text("¡Marco!", posX-size, posY+size+1);
 		return true;
 	}
 

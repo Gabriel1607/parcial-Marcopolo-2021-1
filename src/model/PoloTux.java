@@ -3,33 +3,59 @@ package model;
 import processing.core.PApplet;
 
 public class PoloTux extends Automata {
-
+private boolean isPursued;
 	public PoloTux(float posX, float posY, int spd, PApplet app, int r, int g, int b) {
 		super(posX, posY, spd, app, r, g, b);
-		
+		isPursued= false;
 	}
 
-	@Override
+	public boolean isPursued() {
+		return isPursued;
+	}
+
+	public void setPursued(boolean isPursued) {
+		this.isPursued = isPursued;
+	}
+
+
 	public void run() {
-		// TODO Auto-generated method stub
+		move();
+		speak();
+		try {
+			Thread.sleep(2000);
+		}
+		catch(InterruptedException e) {
+			e.printStackTrace();
+		}
 		
 	}
 
 	@Override
 	public void draw() {
-		// TODO Auto-generated method stub
-		
+		app.fill(r, g, b);
+		app.circle(posX, posY, size);
 	}
 
 	@Override
 	public void move() {
-		// TODO Auto-generated method stub
+		posX+=dirX*spd;
+		posY+=dirY*spd;
+		if(posX>app.width||0>posX) {
+			dirX=-dirX;
+		}
+		if(posY>app.height||0>posY) {
+			dirY=-dirY;
+		}
 		
 	}
 
 	@Override
 	public boolean speak() {
-		// TODO Auto-generated method stub
+		app.fill(0);
+		app.text("¡Polo! ("+(int)posX+","+(int)posY+")", posX-size-15, posY+size);
+		return true;
+	
+		
 		
 	}
 

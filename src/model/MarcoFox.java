@@ -14,7 +14,7 @@ public class MarcoFox extends Automata implements Runnable {
 		try {
 			
 			Thread.sleep(2000);
-			speak();
+			//speak();
 		}
 		catch(InterruptedException e) {
 			e.printStackTrace();

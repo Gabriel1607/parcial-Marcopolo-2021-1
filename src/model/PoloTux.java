@@ -4,6 +4,7 @@ import processing.core.PApplet;
 
 public class PoloTux extends Automata {
 private boolean isPursued;
+private boolean amague;
 	public PoloTux(float posX, float posY, int spd, PApplet app, int r, int g, int b) {
 		super(posX, posY, spd, app, r, g, b);
 		isPursued= false;
@@ -23,7 +24,7 @@ private boolean isPursued;
 		
 		try {
 			Thread.sleep(2000);
-			speak();
+			//speak();
 		}
 		catch(InterruptedException e) {
 			e.printStackTrace();
@@ -33,6 +34,7 @@ private boolean isPursued;
 
 	@Override
 	public void draw() {
+		System.out.println(spd);
 		app.fill(r, g, b);
 		app.circle(posX, posY, size);
 		if(PApplet.second()%2==0) {
@@ -43,6 +45,20 @@ private boolean isPursued;
 
 	@Override
 	protected void move() {
+		if(isPursued) {
+			if(PApplet.second()%3==0) {
+			amague = true;
+			}
+			
+			if(amague) {
+				spd=3;
+				dirY=-dirY;
+			}
+			if(PApplet.second()%3!=0) {
+			amague = false;
+			spd=1;
+		}
+		}
 		posX+=dirX*spd;
 		posY+=dirY*spd;
 		if(posX>app.width||0>posX) {
@@ -51,6 +67,7 @@ private boolean isPursued;
 		if(posY>app.height||0>posY) {
 			dirY=-dirY;
 		}
+		
 		
 	}
 

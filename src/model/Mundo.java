@@ -34,15 +34,36 @@ public void draw() {
 		polito.move();
 		new Thread(polito).start();
 	}
-
-	
-	//System.out.println(fox.getSpd());
+	float maxDist = 700;
+	float closeDist = 0;
+	int politoPursued=0;
+for (int i = 0; i < politos.size(); i++) {
+	politos.get(politoPursued).setPursued(false);
+		closeDist =PApplet.dist(marquitos.get(0).getPosX(),marquitos.get(0).getPosY(),
+				                 politos.get(i).getPosX(),politos.get(i).getPosY());
+		if(closeDist<maxDist) {
+			maxDist=closeDist;
+			politoPursued=i;
+		}
+	}
+	politos.get(politoPursued).setPursued(true);
+	marquitos.get(0).moveSetup(politos.get(politoPursued).getPosX(),politos.get(politoPursued).getPosY());
+	if(PApplet.dist(marquitos.get(0).getPosX(), marquitos.get(0).getPosY(), 
+			politos.get(politoPursued).getPosX(), politos.get(politoPursued).getPosY()) < 20) {
+		marquitos.remove(0);
+		marquitos.add(new MarcoFox(politos.get(politoPursued).getPosX(), politos.get(politoPursued).getPosY(),
+				2,app,0,199,255));
+		politos.remove(politoPursued);
+		
+		
+	}
 }
+
 public void mouseClicked() {
-	for (MarcoFox marcoFox : marquitos) {
-		marcoFox.moveSetup(app.mouseX, app.mouseY);
+	
 	}
 	
 	
+
 }
-}
+;

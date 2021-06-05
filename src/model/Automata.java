@@ -21,6 +21,12 @@ public Automata(float posX, float posY, int spd, PApplet app, int r,int g,int b)
 	size=20;
 	
 }
+public float getPosX() {
+	return posX;
+}
+public float getPosY() {
+	return posY;
+}
 public int getSpd() {
 	return spd;
 }
